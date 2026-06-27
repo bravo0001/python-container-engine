@@ -25,3 +25,14 @@ While the subdirectory branches contain granular educational step-logs exploring
 ```bash
 # Bootstrapping an isolated, secure shell sandbox via the runtime engine
 sudo python3 run_container.py /bin/bash
+
+## 🛠️ Compilation, Installation & Dev Environment
+
+Because standard Python high-level abstraction wrappers do not natively expose critical low-level Linux system calls (such as granular flags for raw kernel unsharing or advanced system mount structures), this engine utilizes a custom native C-extension module mapped through `linux.c`.
+
+If you modify the low-level system call wrappers or want to build the project locally, use the following workspace automation parameters:
+
+### 1. Build and Install the Native C-Extension Module
+This compiles the raw C source code (`linux.c`) and registers the custom `linux` system binding library globally into your Python environment:
+```sh
+make install
